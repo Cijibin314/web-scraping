@@ -16,7 +16,7 @@ public class OllamaExtractor {
     public static String extractInfo(String textContent, String schema, String url) throws IOException {
         try {
             // Prepare the request payload
-            String prompt = "You are a data extraction machine. Your only function is to analyze the provided text and return a single, clean JSON object that strictly adheres to the provided schema. Do not include any additional text, explanations, or markdown. Do not invent new fields. Do not include any HTML tags in your output. If you cannot find a value for a field, return an empty string.\n\nText Content:\n" + textContent + "\n\nSchema:\n" + schema;
+            String prompt = "You are a data extraction machine. Your only function is to analyze the provided text and return a single, clean JSON object that strictly adheres to the provided schema. Prioritize finding a summary or 'About Us' section for the description. Do not include any additional text, explanations, or markdown. Do not invent new fields. Do not include any HTML tags in your output. If you cannot find a value for a field, return an empty string.\n\nText Content:\n" + textContent + "\n\nSchema:\n" + schema;
             OllamaRequest ollamaRequest = new OllamaRequest("llama3", prompt, false);
 
             // Create the HTTP connection
